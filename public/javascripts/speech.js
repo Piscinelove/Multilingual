@@ -6,15 +6,27 @@
     if('webkitSpeechRecognition' in window )
     {
         var recognition = new webkitSpeechRecognition();
-        //recognition.lang = 'en-US';
-        recognition.continuous = false;
+        recognition.lang = 'en-US';
+        recognition.continuous = true;
         recognition.interimResults = true;
         
         $recordButton.on("click", function (e) {
-            recognition.start();
-            $recordButton.addClass('pulse')
-            $recordButton.addClass('red');
-            $recordButton.addClass('darken-1');
+            if($(this).hasClass('stopped')){
+                console.log("started!");
+                recognition.start();
+                $recordButton.addClass('pulse');
+                $recordButton.addClass('red');
+                $recordButton.addClass('darken-1');
+                $(this).removeClass('stopped');
+            }else{
+                console.log("stopped!");
+                recognition.stop();
+                $recordButton.removeClass('pulse');
+                $recordButton.removeClass('red');
+                $recordButton.removeClass('darken-1');
+                $(this).addClass('stopped');
+            }
+
         })
         
         recognition.onresult = function (event) {
