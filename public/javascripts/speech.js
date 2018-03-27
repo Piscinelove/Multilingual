@@ -6,7 +6,7 @@
     if('webkitSpeechRecognition' in window )
     {
         var recognition = new webkitSpeechRecognition();
-        //recognition.lang = 'en-US';
+        recognition.lang = 'en-US';
         recognition.continuous = false;
         recognition.interimResults = true;
         

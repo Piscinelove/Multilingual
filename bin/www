@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('multilingual:server');
 var http = require('http');
+var ent = require('ent');
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +21,28 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+
+/**
+ *  Socket.io
+ */
+var io = require('socket.io')(server);
+
+io.sockets.on('connection', function (socket, pseudo) {
+    // As soon as we are given a nickname, we store it in session variable and we inform the other people
+    socket.on('new_client', function(pseudo)
+    {
+        pseudo = ent.encode(pseudo);
+        socket.pseudo = pseudo;
+        socket.broadcast.emit('new_client', pseudo);
+    });
+    // As soon as we receive a message, we retrieve the pseudo of its author and we transmit it to the other people
+    socket.on('message', function (message) {
+        message = ent.encode(message);
+        socket.broadcast.emit('message', {pseudo: socket.pseudo, message: message});
+    });
+});
+
+
 
 /**
  * Listen on provided port, on all network interfaces.
