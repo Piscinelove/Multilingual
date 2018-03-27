@@ -82,12 +82,3 @@
     }
 })(jQuery);
 
-<<<<<<< HEAD
-=======
-    $(document).ready(function(){
-        $('#inputlang').formSelect();
-        $('#outputlang').formSelect();
-    });
-
-})(jQuery);
->>>>>>> 39bf4633ee715d490c8e0a09e49c68548450323b
