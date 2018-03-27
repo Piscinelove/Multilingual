@@ -10,16 +10,20 @@
     if('webkitSpeechRecognition' in window )
     {
         var recognition = new webkitSpeechRecognition();
-        recognition.lang = 'en-US';
         recognition.continuous = true;
         recognition.interimResults = true;
         
         $recordButton.on("click", function (e) {
             if($(this).hasClass('stopped')){
                 console.log("started!");
+                var language = $( "#inputlang" ).val();
+                recognition.lang = language;
+                console.log(language);
+
                 recognition.start();
                 textArea.focus();
                 $recordButton.addClass('pulse');
+                $recordButton.removeClass('cyan');
                 $recordButton.addClass('red');
                 $recordButton.addClass('darken-1');
                 $(this).removeClass('stopped');
@@ -28,6 +32,7 @@
                 recognition.stop();
                 $recordButton.removeClass('pulse');
                 $recordButton.removeClass('red');
+                $recordButton.addClass('cyan');
                 $recordButton.removeClass('darken-1');
                 $(this).addClass('stopped');
             }
@@ -77,3 +82,12 @@
     }
 })(jQuery);
 
+<<<<<<< HEAD
+=======
+    $(document).ready(function(){
+        $('#inputlang').formSelect();
+        $('#outputlang').formSelect();
+    });
+
+})(jQuery);
+>>>>>>> 39bf4633ee715d490c8e0a09e49c68548450323b
