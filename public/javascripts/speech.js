@@ -31,7 +31,7 @@
         
         recognition.onresult = function (event) {
             $resultText.text('');
-            for(var i = event.resultIndex; i < event.results.length; i++)
+            for(var i = event.resultIndex; i < event.results.length; ++i)
             {
                 //recognition.stop();
                 transcript = event.results[i][0].transcript;
