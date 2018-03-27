@@ -6,15 +6,19 @@
     if('webkitSpeechRecognition' in window )
     {
         var recognition = new webkitSpeechRecognition();
-        recognition.lang = 'en-US';
         recognition.continuous = true;
         recognition.interimResults = true;
         
         $recordButton.on("click", function (e) {
             if($(this).hasClass('stopped')){
                 console.log("started!");
+                var language = $( "#inputlang" ).val();
+                recognition.lang = language;
+                console.log(language);
+
                 recognition.start();
                 $recordButton.addClass('pulse');
+                $recordButton.removeClass('cyan');
                 $recordButton.addClass('red');
                 $recordButton.addClass('darken-1');
                 $(this).removeClass('stopped');
@@ -23,6 +27,7 @@
                 recognition.stop();
                 $recordButton.removeClass('pulse');
                 $recordButton.removeClass('red');
+                $recordButton.addClass('cyan');
                 $recordButton.removeClass('darken-1');
                 $(this).addClass('stopped');
             }
@@ -55,5 +60,10 @@
     {
         $recordButton.hide();
     }
+
+    $(document).ready(function(){
+        $('#inputlang').formSelect();
+        $('#outputlang').formSelect();
+    });
 
 })(jQuery);

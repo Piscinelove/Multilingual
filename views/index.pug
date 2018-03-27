@@ -9,35 +9,31 @@ block content
         i.material-icons.left keyboard_voice
 
   // Dropdown Trigger
-  // Dropdown Trigger
-  div.center
+  div.container.center
   .row
-    a.dropdown-trigger.btn(href='#', data-target='dropdown1') Input Language
-    // Dropdown Structure
-    ul#dropdown1.dropdown-content
-      li
-        a(href='#!') English
-      li
-        a(href='#!') French
-      li
-        a(href='#!') Finnish
-      li
-        a(href='#!') Danish
-      li
-        a(href='#!') Spanish
 
-    a.dropdown-trigger.btn(href='#', data-target='dropdown2') Output Language
+    .input-field.col.s2
+      select#inputlang
+        option(value='' disabled='' selected='') Input language
+        option(value='en-US') English
+        option(value='fr-FR') French
+        option(value='de-DE') German
+        option(value='es-ES') Spanish
+        option(value='it-IT') Italian
+        option(value='nl-NL') Dutch
+        option(value='pl-PL') Polish
+      label Input
+    .input-field.col.s2
+      select#outputlang
+        option(value='' disabled='' selected='') Output language
+        option(value='en-US') English
+        option(value='fr-FR') French
+        option(value='de-DE') German
+        option(value='es-ES') Spanish
+        option(value='it-IT') Italian
+        option(value='nl-NL') Dutch
+        option(value='pl-PL') Polish
+      label Output
 
-    ul#dropdown2.dropdown-content
-      li
-        a(href='#!') English
-      li
-        a(href='#!') French
-      li
-        a(href='#!') Finnish
-      li
-        a(href='#!') Danish
-      li
-        a(href='#!') Spanish
 
 
