@@ -1,4 +1,7 @@
 (function($){
+
+    if(window.location.href=="http://localhost:3000/chat"){
+
     // Connexion à socket.io
     var socket = io.connect('http://localhost:3000');
     // On demande le pseudo, on l'envoie au serveur et on l'affiche dans le titre
@@ -27,6 +30,8 @@
     // Ajoute un message dans la page
     function insereMessage(pseudo, message) {
         $('#zone_chat').prepend('<p><strong>' + pseudo + '</strong> ' + message + '</p>');
+
+    }
 
     }
 
