@@ -3,5 +3,20 @@ extends layout
 block content
     div.container
 
+        h1.white-text The great chat room
+        form#chat_form(action="/", method="post")
+            div.row
+                div.col.s2
+                div.col.s8
+                    input#message.white-text(type="text", name="message", placeholder="Write your message...", size="50", autofocus)
+                    button.btn.waves-effect.waves-light.right( type="submit", name="action") Send
+                div.col.s2
+
+
+
+        section#zone_chat.white-text
+
+
+
 
 
